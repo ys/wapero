@@ -1,11 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.5'
+#gem 'rails', '3.0.5'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'sqlite3'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -29,3 +29,10 @@ gem 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem 'rails', '>= 3.0.5'
+gem 'mongoid', '>= 2.0.0.rc.8'
+gem 'bson_ext', '>= 1.2.4'
+gem 'devise', '>= 1.2.0'
+gem 'jquery-rails', '>= 0.2.7'
+gem "heroku", ">= 1.19.1"

@@ -1,0 +1,46 @@
+*{
+	font-family:arial;
+	color:#69D2E7;
+}
+h1,h2,h3,h4{margin:20px;font-family:'Arvo';color:#69D2E7;}
+h1{
+position:absolute;	
+top:50px;
+left:50px;
+	font-size:40px;
+}
+ul.hmenu {
+  list-style: none;	
+  float:right;
+	margin-top:0px;
+  padding: 0;
+}
+ul.hmenu li {
+  display: inline;  
+}
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+.username{
+	font-weight:bold;
+}
+a{
+	color:#FA6900;
+	text-decoration:none;
+}
+ul#user_list {
+	list-style-type:square;
+	position:absolute;
+	top:150px;
+	left:100px;
+}
