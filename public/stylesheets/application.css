@@ -94,12 +94,13 @@ form .field label{
 }
 
 
-form{
+#form{
 	margin-bottom:25px;
 	margin-top:25px;
 	width:400px;
-	margin-left:auto;
-	margin-right:auto;
+	position: absolute;
+	top:100px;
+	left:300px;
 	font-size:20px;
 }
 form h3{
@@ -175,11 +176,7 @@ input[type="submit"]:hover, input[type="button"]:hover, input[type="file"]:hover
 input[type="file"]{
 	width:240px;
 }
-#cancel_info{
-	width:400px;
-	margin-left:auto;
-	margin-right:auto;
-}
+
 .twitter{
 	height:30px;
 	position:absolute;
