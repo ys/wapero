@@ -1,5 +1,5 @@
 <h1> Hello my name is <%= @user.name %></h1>
-<%=gravatar_image_tag(@user.email, :class => "avatar", :gravatar => { :default => '/images/gravatar-80.gif' })%>
+<%=gravatar_image_tag(@user.email, :class => "avatar")%>
 <div id="user_desc">
 	I'm <% if @user.role == 'both'%> a developer and a designer<%else%> a <%= @user.role%><%end%>.<br/>	
 </div>
