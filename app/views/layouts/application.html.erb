@@ -6,9 +6,27 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+<script>
+	$(function(){
+		$(document).konami({
+		     callback: function() {
+		         x = window.innerWidth+300;
+				$(".konami").animate({ 
+				        left: "+="+x,
+				      }, 10000 	, function() {
+						$('.konami').css("left","-300px");
+						$('.konami').hide();
+						  });
+		     }
+		 });
+		
+	})
+	
+</script>
 </head>
 <body>
 	<div id="top_border"></div>
+	<%=image_tag 'unicorn.gif',:class =>'konami' %>
 	<ul class="hmenu">
 	    <%= render 'devise/menu/registration_items' %>
 	    <%= render 'devise/menu/login_items' %>

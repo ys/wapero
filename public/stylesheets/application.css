@@ -195,3 +195,9 @@ input[type="file"]{
 	top:150px;
 	left:50px;	
 }
+.konami{
+	position:absolute;
+	z-index:100;
+	top:100px;
+	left:-300px;
+}
