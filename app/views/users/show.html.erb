@@ -1,2 +1,6 @@
-<h1>Users#show</h1>
-<p>User: <%= @user.name %></p>
+<h1> Hello my name is <%= @user.name %></h1>
+<%=gravatar_image_tag(@user.email, :class => "avatar")%>
+<div id="user_desc">
+	I'm <% if @user.role == 'both'%> a developer and a designer<%else%> a <%= @user.role%><%end%>.<br/>	
+</div>
+<a href="http://twitter.com/<%=@user.twitter_name%>"><%= image_tag 'twit.png', :class =>'twitter'%></a>

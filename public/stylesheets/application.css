@@ -31,10 +31,11 @@ ul.hmenu li {
   border: solid 1px #C66;
 }
 
-.username{
+.username a{
 	font-weight:bold;
 	font-size:20px;
 	font-family:'Arvo';
+		color:#69D2E7;
 	
 }
 .role{
@@ -46,15 +47,20 @@ a{
 }
 ul#user_list {
 	list-style-type:square;
+
+}
+#user_desc {
+	font-size:20px;
+	font-family:'Arvo';	
+}
+ul#user_list, #user_desc {
 	position:absolute;
 	top:150px;
-	left:100px;
+	left:150px;
 }
-
 ul#user_list li{
 	line-height:25px;
 }
-
 
 form h2{
 	margin-bottom:30px;
@@ -161,4 +167,16 @@ input[type="file"]{
 	width:400px;
 	margin-left:auto;
 	margin-right:auto;
+}
+.twitter{
+	height:30px;
+	position:absolute;
+	top:200px;
+	left:150px;
+
+}
+.avatar{
+	position:absolute;
+	top:150px;
+	left:50px;	
 }

@@ -1,6 +1,6 @@
 <h1>WAPERO</h1>
 <ul id="user_list">
 <% @users.each do |user| %>
-  <li><span class="username"><%=  user.name %> </span><span class="role"><%=user.role%></span> (<%= link_to '@'+user.twitter_name, 'http://twitter.com/'+user.twitter_name %>)  </li>
+  <li><span class="username"><%= link_to user.name, user %> </span><span class="role"><%=user.role%></span> (<%= link_to '@'+user.twitter_name, 'http://twitter.com/'+user.twitter_name %>)  </li>
 <% end %>
 </ul>

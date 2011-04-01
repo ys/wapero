@@ -36,3 +36,4 @@ gem 'bson_ext', '>= 1.2.4'
 gem 'devise', '>= 1.2.0'
 gem 'jquery-rails', '>= 0.2.7'
 gem "heroku", ">= 1.19.1"
+gem 'gravatar_image_tag'
