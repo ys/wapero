@@ -2,7 +2,7 @@
 	font-family:arial;
 	color:#69D2E7;
 }
-h1,h2,h3,h4{margin:20px;font-family:'Arvo';color:#69D2E7;}
+h1,h2,h3,h4{font-family:'Arvo';color:#69D2E7;}
 h1{
 position:absolute;	
 top:50px;
@@ -33,6 +33,12 @@ ul.hmenu li {
 
 .username{
 	font-weight:bold;
+	font-size:20px;
+	font-family:'Arvo';
+	
+}
+.role{
+	font-style:italic;
 }
 a{
 	color:#FA6900;
@@ -43,4 +49,116 @@ ul#user_list {
 	position:absolute;
 	top:150px;
 	left:100px;
+}
+
+ul#user_list li{
+	line-height:25px;
+}
+
+
+form h2{
+	margin-bottom:30px;
+}
+
+form label{
+	font-size:20px;
+	font-family:'Arvo';
+}
+form input[type="text"],form input[type="password"],form input[type="email"] {
+	height:25px;
+	margin:5px;
+	width:400px;
+	font-size:20px;
+}
+form .field label{
+	margin-top:10px;
+	margin-bottom:20px;	
+}
+
+
+form{
+	margin-bottom:25px;
+	margin-top:25px;
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:20px;
+}
+form h3{
+	margin-top:20px;
+	margin-bottom:20px;
+	padding:10px;
+	background:whiteSmoke;
+	border-radius:10px;
+	-moz-border-radius:10xp;
+	-webkit-border-radius:10px;
+	padding:10px 10px 10px 10px ;
+	border: solid 1px #CCC;
+	border-top: solid 1px #DDD;
+	border-left: solid 1px #DDD;
+}
+
+form h3:hover{
+	
+	background:#E4DACE;
+	border: solid 1px #504436;
+	border-top: solid 1px #9F9782;
+	border-left: solid 1px #9F9782;
+}
+
+form .field{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+input[type="submit"], input[type="button"], input[type="file"]{
+	cursor:pointer;
+	font-size:20px;
+	border:none;
+	border-radius:10px;
+	-moz-border-radius:10xp;
+	-webkit-border-radius:10px;
+	padding:10px 10px 10px 10px ;
+	background:#E4DACE;
+	border: solid 1px #504436;
+	border-top: solid 1px #9F9782;
+	border-left: solid 1px #9F9782;
+	font-family:'Arvo';
+	
+	
+}
+select{
+	margin:10px;
+		font-size:20px;
+		background:whiteSmoke;
+		border:none;
+		border-radius:10px;
+		-moz-border-radius:10xp;
+		-webkit-border-radius:10px;
+		padding:10px 10px 10px 10px ;
+		border: solid 1px #CCC;
+		border-top: solid 1px #DDD;
+		border-left: solid 1px #DDD;	
+}
+option{
+	font-size:20px;
+	background:whiteSmoke;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover, input[type="file"]:hover{
+	
+	background:whiteSmoke;
+	border: solid 1px #CCC;
+	border-top: solid 1px #DDD;
+	border-left: solid 1px #DDD;
+	
+}
+
+input[type="file"]{
+	width:240px;
+}
+#cancel_info{
+	width:400px;
+	margin-left:auto;
+	margin-right:auto;
 }
