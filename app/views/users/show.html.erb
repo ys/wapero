@@ -4,3 +4,4 @@
 	I'm <% if @user.role == 'both'%> a developer and a designer<%else%> a <%= @user.role%><%end%>.<br/>	
 </div>
 <a href="http://twitter.com/<%=@user.twitter_name%>"><%= image_tag 'twit.png', :class =>'twitter'%></a>
+<%= link_to 'Home', root_path %>
