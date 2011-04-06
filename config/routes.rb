@@ -1,5 +1,7 @@
 Wapero::Application.routes.draw do
 
+  resources :events
+
   devise_for :users
   resources :users, :only => :show
   root :to => "home#index"
