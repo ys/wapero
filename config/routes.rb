@@ -1,6 +1,11 @@
 Wapero::Application.routes.draw do
 
-  resources :events
+  resources :events do
+    member do
+        post 'join'
+        delete 'leave'
+      end
+  end
 
   devise_for :users
   resources :users, :only => :show

@@ -1,4 +1,7 @@
 class EventsController < ApplicationController
+  
+  before_filter :authenticate_user! , :except => [:show, :index]
+  
   # GET /events
   # GET /events.xml
   def index
@@ -78,6 +81,42 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(events_url) }
       format.xml  { head :ok }
+    end
+  end
+  
+  # POST /events/1/participate
+  # POST /events/1/participate.xml
+  def join
+    @event = Event.find(params[:id])
+    if (!@event.users.include? current_user)
+      @event.users << current_user
+    end
+    
+    respond_to do |format|
+      if @event.update
+        format.html { redirect_to(@event) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "show" }
+        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  # DELETE /events/1/participate
+  # DELETE /events/1/participate.xml
+  def leave
+    @event = Event.find(params[:id])
+    @event.users.delete current_user
+    
+    respond_to do |format|
+      if @event.update
+        format.html { redirect_to(@event) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "show" }
+        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end

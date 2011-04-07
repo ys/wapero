@@ -15,6 +15,16 @@
   <%= @event.title %>
 </p>
 
-
+<p>
+  <b>Users:</b>
+  <% @event.users.each do |user|%>
+  <li><%= user.name%></li>
+  <%end%>
+</p>
+<%if !@event.users.include? current_user %>
+	<%= link_to 'Join', join_event_path(@event), :method => :post %>
+<%else%>
+	<%= link_to 'Leave', leave_event_path(@event) , :method => :delete%>
+<%end%>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
