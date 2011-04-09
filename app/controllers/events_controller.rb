@@ -1,11 +1,21 @@
 class EventsController < ApplicationController
   
   before_filter :authenticate_user! , :except => [:show, :index]
+  before_filter :is_admin! , :except => [:show, :join, :leave]
   
+  
+  def is_admin!
+    if authenticate_user!
+      unless current_user.is_admin?
+        flash[:warning] = "You're not the right user!"
+        redirect_to root_url
+      end
+    end
+  end
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
+    @events = Event.desc("event_day").all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +38,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @event }
@@ -44,7 +54,7 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
-
+    @event.creator = current_user
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
@@ -108,6 +118,8 @@ class EventsController < ApplicationController
   def leave
     @event = Event.find(params[:id])
     @event.users.delete current_user
+    current_user.events.delete @event
+    current_user.update
     
     respond_to do |format|
       if @event.update

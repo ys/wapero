@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -10,20 +11,21 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
   <div class="field">
     <%= f.label :event_day %><br />
-    <%= f.date_select :event_day %>
+    <%= f.datetime_select(:event_day, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}, :order => [:day, :month, :year], :start_year =>     Date.today.year, :end_year => Date.today.year + 2, :minute_step => 	15, :datetime_separator => '', :time_separator => '') %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>

@@ -1,30 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Event day:</b>
-  <%= @event.event_day %>
-</p>
+<h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %I:%M'%>  </span></h1> 
+<div class='desc'>
 
-<p>
-  <b>Description:</b>
+
+<p class=description>
+  
   <%= @event.description %>
 </p>
 
-<p>
-  <b>Title:</b>
-  <%= @event.title %>
-</p>
 
 <p>
-  <b>Users:</b>
-  <% @event.users.each do |user|%>
-  <li><%= user.name%></li>
-  <%end%>
+  <b>Participants:</b>
+	<ul>
+  	<% @event.users.each do |user|%>
+  		<li><%= link_to user.name, user %></li>
+  	<%end%>
+	</ul>
+	<%if @event.event_day > DateTime.now %>
+	<%if !@event.users.include? current_user%>
+		<%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link"%>
+	<%else%>
+		<%= link_to 'Leave', leave_event_path(@event) , :method => :delete, :class => "button_link"%>
+	<%end%>
+	<%end%>
 </p>
-<%if !@event.users.include? current_user %>
-	<%= link_to 'Join', join_event_path(@event), :method => :post %>
+
+</div>
+
+<%if @event.event_day > DateTime.now %><%if !@event.users.include? current_user %>
+	<%= link_to 'Join', join_event_path(@event), :method => :post%>
 <%else%>
 	<%= link_to 'Leave', leave_event_path(@event) , :method => :delete%>
 <%end%>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%end%>

@@ -1,9 +1,14 @@
 <h1> Hello my name is <%= @user.name %></h1>
 <%=gravatar_image_tag(@user.email, :class => "avatar")%>
-<div id="user_desc">
+<div class="desc">
 	I'm <% if @user.role == 'both'%> a developer and a designer<%else%> a <%= @user.role%><%end%>.<br/>	
+	<ul class="list">
+	<% @user.events.each do |event| %>
+	  <li><span class="event"><%= link_to event.title, event %> </span><span class="role"> - <%= event.event_day.strftime '%d/%m/%y %I:%M' %></span></li>
+	<% end %>
+	</ul>
 </div>
 <div class="twitter">
-<a href="http://twitter.com/<%=@user.twitter_name%>"><%= image_tag 'twit.png'%></a>
-<span><%= @last_tweet%></span></div>
-<%= link_to 'Home', root_path %>
+	<a href="http://twitter.com/<%=@user.twitter_name%>"><%= image_tag 'twit.png'%></a>
+</div>
+

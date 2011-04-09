@@ -1,27 +1,9 @@
-<h1>Listing events</h1>
+<h1>All the Waperos</h1>
 
-<table>
-  <tr>
-    <th>Event day</th>
-    <th>Description</th>
-    <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<ul class="list">
 <% @events.each do |event| %>
-  <tr>
-    <td><%= event.event_day %></td>
-    <td><%= event.description %></td>
-    <td><%= event.title %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+  <li><span class="event"><%= link_to event.title, event %> </span><span class="role"> - <%= event.event_day.strftime '%d/%m/%y %I:%M' %> - Participants : <%= event.users.size%></span><% if is_admin? %>  <br/>(<%= link_to 'Edit', edit_event_path(event) %>, <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>)<%end%></li>
 <% end %>
-</table>
+</ul>
 
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+<% if is_admin? %><%= link_to 'New Event', new_event_path %><%end%>
