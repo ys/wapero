@@ -38,3 +38,5 @@ gem 'jquery-rails', '>= 0.2.7'
 gem "heroku", ">= 1.19.1"
 gem 'gravatar_image_tag'
 gem 'twitter'
+gem 'bluecloth'
+gem 'formatize'

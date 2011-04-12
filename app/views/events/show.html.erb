@@ -1,7 +1,7 @@
 <h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %I:%M'%>  </span></h1> 
 <div class='desc'>
   <p class=description>
-    <%= @event.description %>
+    <%= markdown(@event.description) %>
   </p>
   <p>
     <strong>Participants:</strong>

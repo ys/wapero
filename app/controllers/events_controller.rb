@@ -38,6 +38,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
+    @event.event_day = Time.new
     
     respond_to do |format|
       format.html # new.html.erb
