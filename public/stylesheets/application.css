@@ -398,3 +398,20 @@ height:30px;
 	top:100px;
 	left:-300px;
 }
+
+/* TODO: Make all these files less.js-abled */
+h1, h2, h3 {
+  margin: 0 0 1em 0;
+}
+h1 {
+  font-size: 2em;
+}
+h2 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.25em;
+}
+p {
+  margin: 0 0 1em 0;
+}
