@@ -21,15 +21,14 @@
   <%= csrf_meta_tag %>
 </head>
 <body lang="<%= I18n.locale %>">
-
- <div id="container">
+  <div id="container">
     <header>
-	  <h1><%=link_to 'WAPERO', root_url%></h1><span id="baseline">Developers, Designers and some drinks.</span>
-	  <nav>
-	    <%= render 'layouts/menu/menu' %>
-		<%= render 'devise/menu/registration_items' %>
-		<%= render 'devise/menu/login_items' %>
-	  </nav>
+      <h1><%=link_to 'WAPERO', root_url%></h1><span id="baseline">Developers, Designers and some drinks.</span>
+      <nav>
+        <%= render 'layouts/menu/menu' %>
+        <%= render 'devise/menu/registration_items' %>
+        <%= render 'devise/menu/login_items' %>
+      </nav>
     </header>
 
     <div id="main" role="main">
@@ -37,7 +36,7 @@
     </div>
 
     <footer>
-      	<%if false%><%- flash.each do |name, msg| -%>
+      <%if false%><%- flash.each do |name, msg| -%>
 		  <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
 		<%- end -%><%end%>
     </footer>
@@ -51,6 +50,5 @@
   <!--[if lt IE 7 ]>
   	<%= javascript_include_tag 'dd_belatedpng.js' %>
   <![endif]-->
-
 </body>
 </html>
