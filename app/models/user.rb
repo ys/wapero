@@ -16,6 +16,7 @@ class User
   attr_protected :admin
   has_and_belongs_to_many :events, :inverse_of => :users
   has_many :events_created, class_name: "Event", inverse_of: :creator
+  scope :by_name , asc(:name)
   def is_admin?
     admin
   end

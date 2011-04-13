@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @users = User.desc("name").all
+    @users = User.by_name.all
     @events = Event.future
 
   end
