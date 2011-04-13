@@ -1,6 +1,6 @@
 
 
-	<h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %I:%M'%>  </span></h1> <%if @event.event_day > DateTime.now %>
+	<h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %H:%M'%>  </span></h1> <%if @event.event_day > DateTime.now %>
       <%if !@event.users.include? current_user%>
         <%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link join"%>
       <%else%>
