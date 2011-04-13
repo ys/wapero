@@ -56,6 +56,15 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(params[:event])
     @event.creator = current_user
+
+    # TODO: DRY this
+    require 'net/http'
+    url = URI.parse('http://maps.googleapis.com/maps/api/geocode/json?address='+URI.encode(@event.location)+'&sensor=false')
+    r = Net::HTTP.get_response(url)
+    j = JSON::parse(r.body)
+    @event.geocoded = j
+
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
@@ -71,6 +80,13 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+
+    # TODO: DRY this
+    require 'net/http'
+    url = URI.parse('http://maps.googleapis.com/maps/api/geocode/json?address='+URI.encode(@event.location)+'&sensor=false')
+    r = Net::HTTP.get_response(url)
+    j = JSON::parse(r.body)
+    @event.geocoded = j
 
     respond_to do |format|
       if @event.update_attributes(params[:event])

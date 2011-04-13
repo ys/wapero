@@ -19,6 +19,10 @@
     <%= f.datetime_select(:event_day, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}, :order => [:day, :month, :year], :start_year =>     Date.today.year, :end_year => Date.today.year + 2, :minute_step => 	15, :datetime_separator => '', :time_separator => '') %>
   </div>
   <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
     <small><a href="http://daringfireball.net/projects/markdown/">Markdown accepted</a></small>
