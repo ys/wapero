@@ -1,8 +1,8 @@
 <div class=main>
   <h2>Future Events</h2>
   <ul>
-    <% @events.each do |event| %>
-    <li><span class="role"><%= event.event_day.strftime '%d/%m/%y' %></span> <span class="event"><%= link_to event.title, event %> </span><span class="role">  - Participants : <%= event.users.size%></span><% if false %>(<%= link_to 'Edit', edit_event_path(event) %>, <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>)<%end%></li>
+    <% @events.future.each do |event| %>
+    <li><span class="role"><%= event.event_day.strftime '%d.%m.%y' %></span> <span class="event"><%= link_to event.title, event %> </span><span class="role"> <% if false %> - Participants : <%= event.users.size%></span>(<%= link_to 'Edit', edit_event_path(event) %>, <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>)<%end%></li>
     <% end %>
   </ul>
   <h2>Folks</h2>
@@ -11,5 +11,13 @@
     <li><span class="username"><%= link_to user.name, user %> </span><span class="role"><%=user.role%></span> (<%= link_to '@'+user.twitter_name, 'http://twitter.com/'+user.twitter_name %>)  </li>
     <% end %>
   </ul>
+  <% unless @events.past.empty?%>
+  <h2>Past Events</h2>
+  <ul>
+    <% @events.past.each do |event| %>
+    <li><span class="role"><%= event.event_day.strftime '%d.%m.%y' %></span> <span class="event"><%= link_to event.title, event %> </span><span class="role"> <% if false %> - Participants : <%= event.users.size%></span>(<%= link_to 'Edit', edit_event_path(event) %>, <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>)<%end%></li>
+    <% end %>
+  </ul>
+  <%end%>
 </div>
 

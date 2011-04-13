@@ -6,10 +6,12 @@
   <%= f.text_field :name %></p>
   <p><%= f.label :twitter_name %><br />
   <%= f.text_field :twitter_name %></p>
+  <p>
 	<%= f.label :role , 'Role : '%>
 	<% roles.each() do |role|%>
     <label><%= radio_button_tag 'user[role]', role %> <span><%=role%></span></label>
     <%end%>
+  </p>
   <p><%= f.label :email %><br />
   <%= f.email_field :email %></p>
 
@@ -24,4 +26,3 @@
 
 <%= render :partial => "devise/shared/links" %>
 </div>
-<%= link_to 'Home', root_path %>

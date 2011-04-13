@@ -1,0 +1,9 @@
+<div class="form_inline">
+  	<%= form_tag comment_event_path do %>
+	<%= label_tag(:comment, "Post a comment:") %><br/>
+	  <%= text_area_tag(:comment) %>
+	  <div class="actions">
+	    <%= submit_tag "Comment" %>
+	  </div>
+	<% end %>
+</div>

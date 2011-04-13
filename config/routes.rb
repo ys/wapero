@@ -4,6 +4,7 @@ Wapero::Application.routes.draw do
     member do
         post 'join'
         delete 'leave'
+        post 'comment'
       end
   end
 

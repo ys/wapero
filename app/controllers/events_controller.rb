@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   
   before_filter :authenticate_user! , :except => [:show, :index]
-  before_filter :is_admin! , :except => [:show, :join, :leave]
+  before_filter :is_admin! , :except => [:show, :join, :leave, :comment]
   
   
   def is_admin!
@@ -145,6 +145,22 @@ class EventsController < ApplicationController
       else
         format.html { render :action => "show" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  # POST /events/1/comment
+  def comment
+    @event = Event.find(params[:id])
+    @comment = Comment.new
+    @comment.comment_body = params[:comment]
+    @comment.author = current_user
+    @event.comments << @comment
+    respond_to do |format|
+      if @event.update
+        format.html { redirect_to(@event) }
+      else
+        format.html { render :action => "show" }
       end
     end
   end

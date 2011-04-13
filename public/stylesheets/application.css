@@ -209,9 +209,13 @@ nav li {
 
 .username a, .event a{
 	font-weight:bold;
-	font-size:20px;
+	font-size:15px;
 	font-family:'Arvo';
 	color:#333333;
+	
+}
+.event a {
+	margin-left:10px;
 }
 .role{
 	font-style:italic;
@@ -220,7 +224,7 @@ nav li {
 .date{
 	font-family:arial;
 	font-weight:100;
-	font-size:18px;
+	font-size:13px;
 	text-shadow: 0px 0px 0px #bbbaba;
 }
 ul {
@@ -228,18 +232,19 @@ ul {
 	margin-bottom:40px;
 
 }
-.desc {
-	font-size:20px;
-	font-family:'Arvo';	
+li{
+	margin-top:5px;
 }
-ul.list, .desc ,.main{
+strong{
+	font-family:Arvo;
+	font-size:15px;
+}
+
+#main{
 	position:absolute;
 	top:150px;
 	left:150px;
 	
-}
-.main ul:last-child{
-	border-top:solid 1px #FA6900;
 }
 ul.list.right{
 	left: 600px;
@@ -255,20 +260,39 @@ ul.wapero_tweets{
 	right:150px;
 	width:500px;	
 }
+.user_card{
+	height:100px;
+}
+.avatar{
+	float:left;
+}
+.desc{
+	margin-left:20px;
+	float:left;
+	font-size:15px;
+}
+.twitter{
+	margin-top:20px;
+	height:30px;
+}
+.twitter img{
+	height:30px;float:left;	
+}
+
 form h2{
 	margin-bottom:30px;
 }
 
 form label{
-	font-size:20px;
 	font-family:'Arvo';
 }
 form input[type="text"],form input[type="password"],form input[type="email"] , form textarea{
 	
-	height:25px;
+	height:18px;
+	font-size:16px;
 	margin:5px;
 	width:400px;
-	font-size:20px;
+
 }
 form textarea{
 	height:200px;
@@ -283,10 +307,7 @@ form .field label{
 	margin-bottom:25px;
 	margin-top:25px;
 	width:400px;
-	position: absolute;
-	top:100px;
-	left:300px;
-	font-size:20px;
+
 }
 form h3{
 	margin-top:20px;
@@ -294,7 +315,7 @@ form h3{
 	padding:10px;
 	background:whiteSmoke;
 	border-radius:10px;
-	-moz-border-radius:10xp;
+	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	padding:10px 10px 10px 10px ;
 	border: solid 1px #CCC;
@@ -317,7 +338,6 @@ form .field{
 
 input[type="submit"], input[type="button"], input[type="file"], .button_link{
 	cursor:pointer;
-	font-size:20px;
 	border:none;
 	border-radius:10px;
 	-moz-border-radius:10xp;
@@ -366,39 +386,42 @@ input[type="file"]{
 	width:240px;
 }
 
-.twitter{
-height:30px;
-	position:absolute;
-	top:200px;
-	left:150px;
 
-}
-.twitter img{
-	height:30px;float:left;	
-}
-.twitter span{
-	margin-left:20px;
-	float:left;
-	display:block;
-	height:30px;
-	line-height:30px;
-		
-}
-.twitter span:before, .twitter span:after{
-	content:"\"";
-}
-.avatar{
-	position:absolute;
-	top:150px;
-	left:50px;	
-}
+
 .konami{
 	position:absolute;
 	z-index:100;
 	top:100px;
 	left:-300px;
 }
+.comments{
+	font-family:arial;
+	list-style-type:none;
+}
+.comments li {
+	margin-top:10px;
+	margin-bottom:10px;
+	border-bottom:solid 1px #333;
 
+}
+
+.comments .gravatar_link img{
+	height:40px;
+}
+.comments .gravatar_link{
+}
+.comments p {
+	width:500px;
+	margin-left:10px;
+}
+.comments .comment_info{
+	font-size:11px;
+}
+
+
+.join{
+	float:right;
+}
 /* TODO: Make all these files less.js-abled */
 h1, h2, h3 {
   margin: 0 0 1em 0;

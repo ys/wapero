@@ -1,5 +1,12 @@
-<h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %I:%M'%>  </span></h1> 
-<div class='desc'>
+
+
+	<h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %I:%M'%>  </span></h1> <%if @event.event_day > DateTime.now %>
+      <%if !@event.users.include? current_user%>
+        <%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link join"%>
+      <%else%>
+        <%= link_to 'Leave', leave_event_path(@event) , :method => :delete, :class => "button_link join"%>
+      <%end%>
+    <%end%>
   <p class=description>
     <%= markdown(@event.description) %>
   </p>
@@ -17,22 +24,22 @@
         <li><%= link_to user.name, user %></li>
       <%end%>
     </ul>
-    <%if @event.event_day > DateTime.now %>
-      <%if !@event.users.include? current_user%>
-        <%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link"%>
-      <%else%>
-        <%= link_to 'Leave', leave_event_path(@event) , :method => :delete, :class => "button_link"%>
-      <%end%>
-    <%end%>
+    
   </p>
-</div>
+  <p>
+	<strong>Comments:</strong>
+	<ul class=comments>
+	<% @event.comments.lifo.each do |comment| %>
+		<li><%= link_to gravatar_image_tag(comment.author.email), comment.author , :class => 'gravatar_link'%><span class=comment_info>  <%=comment.created_at.strftime '%d.%m.%y %I:%M'%></span><%= markdown(comment.comment_body)%> </li>
+	<%end%>
+	</ul>
+  	<%if user_signed_in?%>
+		<%= render "comment_form" %>
+	<%end%>
+  </p>
 
-<%if @event.event_day > DateTime.now %><%if !@event.users.include? current_user %>
-	<%= link_to 'Join', join_event_path(@event), :method => :post%>
-<%else%>
-	<%= link_to 'Leave', leave_event_path(@event) , :method => :delete%>
-<%end%>
-<%end%>
+
+
 <% if not @event.geocoded.nil? and @event.geocoded['status'] == 'OK' %>
   <% content_for :javascript_includes do %>
   <script type="text/javascript"
@@ -60,3 +67,4 @@
   </script>
   <% end %>
 <% end %>
+
