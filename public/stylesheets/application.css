@@ -295,7 +295,7 @@ form input[type="text"],form input[type="password"],form input[type="email"] , f
 
 }
 form textarea{
-	height:200px;
+	height:100px;
 }
 form .field label{
 	margin-top:10px;
