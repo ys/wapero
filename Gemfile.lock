@@ -54,6 +54,7 @@ GEM
       actionpack (~> 3.0)
       bluecloth (~> 2.0)
     gravatar_image_tag (1.0.0)
+    haml (3.0.25)
     hashie (1.0.0)
     heroku (1.19.1)
       activesupport (>= 2.1.0)
@@ -131,6 +132,7 @@ DEPENDENCIES
   devise (>= 1.2.0)
   formatize
   gravatar_image_tag
+  haml
   heroku (>= 1.19.1)
   jquery-rails (>= 0.2.7)
   json
