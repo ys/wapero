@@ -30,7 +30,7 @@
 	<strong>Comments:</strong>
 	<ul class=comments>
 	<% @event.comments.lifo.each do |comment| %>
-		<li><%= link_to gravatar_image_tag(comment.author.email), comment.author , :class => 'gravatar_link'%><span class=comment_info>  <%=comment.created_at.strftime '%d.%m.%y %I:%M'%></span><%= markdown(comment.comment_body)%> </li>
+		<li><%= link_to gravatar_image_tag(comment.author.email), comment.author , :class => 'gravatar_link'%><span class=comment_info>  <%=comment.created_at.strftime '%d.%m.%y %H:%M'%></span><%= markdown(comment.comment_body)%> </li>
 	<%end%>
 	</ul>
   	<%if user_signed_in?%>
