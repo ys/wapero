@@ -17,7 +17,11 @@ class User
   has_and_belongs_to_many :events, :inverse_of => :users
   has_many :events_created, class_name: "Event", inverse_of: :creator
   scope :by_name , asc(:name)
+  
+  index :name
+  
   def is_admin?
     admin
   end
+  
 end

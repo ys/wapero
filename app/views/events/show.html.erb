@@ -49,7 +49,7 @@
     function initialize() {
       var latlng = new google.maps.LatLng(<%= @event.geocoded['results'][0]['geometry']['location']['lat'] %>, <%= @event.geocoded['results'][0]['geometry']['location']['lng'] %>);
       var myOptions = {
-        zoom: 8,
+        zoom: 14,
         center: latlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };

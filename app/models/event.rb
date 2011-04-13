@@ -12,4 +12,7 @@ class Event
   embeds_many :comments
   scope :future , desc("event_day").where(:event_day.gte => Time.now)
   scope :past , desc("event_day").where(:event_day.lte => Time.now)
+  
+  index :event_day
+  index :title
 end
