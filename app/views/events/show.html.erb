@@ -13,7 +13,7 @@
   <p>
   	<strong>Lieu:</strong>
     <% if not @event.geocoded.nil? and @event.geocoded['status'] == 'OK' %>
-    <div id="map" style="width: 600px; height: 300px;">&nbsp;</div>
+    <div id="map" style="width: 100%; height: 300px;">&nbsp;</div>
     <% end %>
   </p>
   <p><%= @event.location %></p>

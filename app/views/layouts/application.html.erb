@@ -22,12 +22,14 @@
 <body lang="<%= I18n.locale %>">
   <div id="container">
     <header>
-      <h1><%=link_to 'WAPERO', root_url%></h1><span id="baseline">Developers, Designers and some drinks.</span>
-      <nav>
-        <%= render 'layouts/menu/menu' %>
-        <%= render 'devise/menu/registration_items' %>
-        <%= render 'devise/menu/login_items' %>
-      </nav>
+      <div>
+        <h1><%=link_to 'WAPERO', root_url%></h1><span id="baseline">Developers, Designers and some drinks.</span>
+        <nav>
+          <%= render 'layouts/menu/menu' %>
+          <%= render 'devise/menu/registration_items' %>
+          <%= render 'devise/menu/login_items' %>
+        </nav>
+      </div>
     </header>
 
     <div id="main" role="main">
