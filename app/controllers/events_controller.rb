@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   
   before_filter :authenticate_user! , :except => [:show, :index]
-  before_filter :is_admin! , :except => [:show, :join, :leave, :comment]
+  before_filter :is_admin! , :except => [:show,:index, :join, :leave, :comment]
   
   
   def is_admin!
