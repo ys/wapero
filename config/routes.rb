@@ -9,7 +9,7 @@ Wapero::Application.routes.draw do
   end
 
   devise_for :users
-  resources :users, :only => :show
+  resources :users, :only => [:show, :index]
   root :to => "home#index"
 
   # The priority is based upon order of creation:

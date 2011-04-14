@@ -13,36 +13,36 @@ class EventsController < ApplicationController
     end
   end
   # GET /events
-  # GET /events.xml
+  # GET /events.json
   def index
     @events = Event.desc("event_day").all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @events }
+      format.json  { render :json => @events }
     end
   end
 
   # GET /events/1
-  # GET /events/1.xml
+  # GET /events/1.json
   def show
     @event = Event.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @event }
+      format.json  { render :json => @event }
     end
   end
 
   # GET /events/new
-  # GET /events/new.xml
+  # GET /events/new.json
   def new
     @event = Event.new
     @event.event_day = Time.new
     
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @event }
+      format.json  { render :json => @event }
     end
   end
 
@@ -52,7 +52,7 @@ class EventsController < ApplicationController
   end
 
   # POST /events
-  # POST /events.xml
+  # POST /events.json
   def create
     @event = Event.new(params[:event])
     @event.creator = current_user
@@ -68,16 +68,16 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
-        format.xml  { render :xml => @event, :status => :created, :location => @event }
+        format.json  { render :json => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @event.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # PUT /events/1
-  # PUT /events/1.xml
+  # PUT /events/1.json
   def update
     @event = Event.find(params[:id])
 
@@ -91,28 +91,28 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update_attributes(params[:event])
         format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @event.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /events/1
-  # DELETE /events/1.xml
+  # DELETE /events/1.json
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
       format.html { redirect_to(events_url) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
   
   # POST /events/1/participate
-  # POST /events/1/participate.xml
+  # POST /events/1/participate.json
   def join
     @event = Event.find(params[:id])
     if (!@event.users.include? current_user)
@@ -122,16 +122,16 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update
         format.html { redirect_to(@event) }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "show" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @event.errors, :status => :unprocessable_entity }
       end
     end
   end
   
   # DELETE /events/1/participate
-  # DELETE /events/1/participate.xml
+  # DELETE /events/1/participate.json
   def leave
     @event = Event.find(params[:id])
     @event.users.delete current_user
@@ -141,10 +141,10 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update
         format.html { redirect_to(@event) }
-        format.xml  { head :ok }
+        format.json  { head :ok }
       else
         format.html { render :action => "show" }
-        format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @event.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -159,8 +159,10 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update
         format.html { redirect_to(@event) }
+        format.json  { head :ok }
       else
         format.html { render :action => "show" }
+        format.json  { render :json => @event.errors, :status => :unprocessable_entity }
       end
     end
   end
