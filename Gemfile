@@ -34,7 +34,7 @@ gem 'rails', '>= 3.0.5'
 
 gem 'mongoid', '>= 2.0.1'
 gem 'bson_ext', '>= 1.3.0'
-gem 'hassle'
+gem 'hassle', :git => 'git://github.com/koppen/hassle.git'
 gem 'devise', '>= 1.2.0'
 gem 'jquery-rails', '>= 0.2.7'
 gem "heroku", ">= 1.19.1"
