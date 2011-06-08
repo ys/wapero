@@ -10,7 +10,7 @@ class User
   field :admin , :type => Boolean
   validates_presence_of :name
   validates_presence_of :role
-  validates_presence_of :twitter_name
+  #validates_presence_of :twitter_name
   validates_uniqueness_of :name, :email, :case_sensitive => false
   attr_accessible :name, :twitter_name,:authentications, :role, :email, :password, :password_confirmation, :remember_me
   attr_protected :admin
