@@ -1,0 +1,5 @@
+<ul class="list">
+<% @ideas.each do |idea| %>
+  <li><span class="idea"><%= idea.title %> </span><span class=description><%= markdown(idea.description) %></span><%if current_user == idea.creator%><span class='delete'><%= link_to 'Delete', idea, :confirm => 'Are you sure?', :method => :delete %></span><%end%></li>
+<% end %>
+</ul>

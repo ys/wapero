@@ -7,7 +7,7 @@ Wapero::Application.routes.draw do
         post 'comment'
       end
   end
-
+  resources :ideas
   devise_for :users
   resources :users, :only => [:show, :index]
   root :to => "home#index"

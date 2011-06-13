@@ -148,3 +148,4 @@ DEPENDENCIES
   mongoid (>= 2.0.1)
   rails (>= 3.0.5)
   twitter
+  will_paginate

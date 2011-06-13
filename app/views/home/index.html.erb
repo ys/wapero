@@ -19,5 +19,25 @@
     <% end %>
   </ul>
   <%end%>
-</div>
+	</div>
+	<% if  user_signed_in?%>
+	<aside>
+			<h2>Ideas for next wapero?</h2>
+	
+		<ul class=ideas>
+			<% @ideas.each do |idea| %>
+				<li class=idea><%=idea.title%></li>
+			<%end%>
+			<li><form accept-charset="UTF-8" action="/ideas" class="new_idea" id="new_idea" method="post"><input name="authenticity_token" type="hidden" value="DVHKyNSsMazbMfbVXdqyD07yuJQgAoAIgiMD4wPV62U=">
+			 
+			    <input id="idea_title" name="idea[title]" size="30" type="text">
+			  <div class="actions">
+			    <input id="idea_submit" name="commit" type="submit" value="Create Idea">
+			  </div>
+			</form>
+			</li>
+		</ul>
+		
+	</aside>
+<%end%>
 
