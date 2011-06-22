@@ -1,0 +1,11 @@
+development:
+  host: localhost
+  database: wapero
+
+test:
+  host: localhost
+  database: wapero
+
+# set these environment variables on your prod server
+production:
+  uri: <%= ENV['MONGOHQ_URL'] %>
