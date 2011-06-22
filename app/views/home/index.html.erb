@@ -2,7 +2,7 @@
   <h2>Future Events</h2>
   <ul>
     <% @events.future.each do |event| %>
-    <li><%if @event.has_date? %><span class="role"><%= event.event_day.strftime '%d.%m.%y' %></span><%end%> <span class="event"><%= link_to event.title, event %> </span><span class="role"> <% if false %> - Participants : <%= event.users.size%></span>(<%= link_to 'Edit', edit_event_path(event) %>, <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>)<%end%></li>
+    <li><%if event.has_date? %><span class="role"><%= event.event_day.strftime '%d.%m.%y' %></span><%end%> <span class="event"><%= link_to event.title, event %> </span><span class="role"> <% if false %> - Participants : <%= event.users.size%></span>(<%= link_to 'Edit', edit_event_path(event) %>, <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %>)<%end%></li>
     <% end %>
   </ul>
   <h2>Folks</h2>
