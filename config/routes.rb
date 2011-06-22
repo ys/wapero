@@ -1,6 +1,7 @@
 Wapero::Application.routes.draw do
 
   resources :events do
+    resources :possible_dates
     member do
         post 'join'
         delete 'leave'

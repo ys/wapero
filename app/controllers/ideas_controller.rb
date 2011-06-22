@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   
-  before_filter :authenticate_user! , :except => [:show, :index]
+  before_filter :authenticate_user! 
   
   # GET /ideas
   # GET /ideas.json
@@ -59,12 +59,19 @@ class IdeasController < ApplicationController
   # PUT /ideas/1.json
   def update
     @idea = Idea.find(params[:id])
+    if @idea.voters.include?(current_user.id) 
+       @idea.voters.delete current_user.id 
+    else
+      @idea.voters << current_user.id
+    end
+     
+   
     respond_to do |format|
-      if @idea.update_attributes(params[:idea])
-        format.html { redirect_to(@idea, :notice => 'Idea was successfully updated.') }
+      if @idea.update
+        format.html { redirect_to(root_path) }
         format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { redirect_to(root_path) }
         format.json  { render :json => @idea.errors, :status => :unprocessable_entity }
       end
     end
@@ -77,7 +84,7 @@ class IdeasController < ApplicationController
     @idea.destroy
 
     respond_to do |format|
-      format.html { redirect_to(ideas_url) }
+      format.html { redirect_to(root_path) }
       format.json  { head :ok }
     end
   end

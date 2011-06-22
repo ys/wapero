@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = Event.find(params[:id])
-
+logger.info @event.to_json
     respond_to do |format|
       format.html # show.html.erb
       format.json  { render :json => @event }
@@ -39,7 +39,8 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.event_day = Time.new
-    
+    @event.possible_dates << PossibleDate.new
+
     respond_to do |format|
       format.html # new.html.erb
       format.json  { render :json => @event }
@@ -54,9 +55,9 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    @event = Event.create(params[:event])
     @event.creator = current_user
-
+    
     # TODO: DRY this
     require 'net/http'
     url = URI.parse('http://maps.googleapis.com/maps/api/geocode/json?address='+URI.encode(@event.location)+'&sensor=false')
@@ -64,7 +65,7 @@ class EventsController < ApplicationController
     j = JSON::parse(r.body)
     @event.geocoded = j
 
-
+    
     respond_to do |format|
       if @event.save
         format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
@@ -137,6 +138,23 @@ class EventsController < ApplicationController
     @event.users.delete current_user
     current_user.events.delete @event
     current_user.update
+    
+    respond_to do |format|
+      if @event.update
+        format.html { redirect_to(@event) }
+        format.json  { head :ok }
+      else
+        format.html { render :action => "show" }
+        format.json  { render :json => @event.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+  
+  # POST /events/1/vote/date_id
+  # POST /events/1/vote/date_id.json
+  def vote_for
+    @event = Event.find(params[:id])
+    
     
     respond_to do |format|
       if @event.update

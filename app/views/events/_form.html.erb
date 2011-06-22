@@ -11,12 +11,23 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :event_day %><br />
+    <%= f.label :has_date %>
+    <%= f.check_box :has_date %>
+  </div>
+  <div class="field">
+    <%= f.label :event_day %><br>
     <%= f.datetime_select(:event_day, :prompt => {:day => 'Day', :month => 'Month', :year => 'Year'}, :order => [:day, :month, :year], :start_year =>     Date.today.year, :end_year => Date.today.year + 2, :minute_step => 	15, :datetime_separator => '', :time_separator => '') %>
+  </div>
+  <div class="field">
+    <%= f.label :possible_dates %>
+    <%= f.fields_for :possible_dates do |p| %>
+      <%= render 'possible_date_fields', :f => p %>  
+    <% end %>  
+    <p><%= link_to_add_fields "Add Date", f, :possible_dates %></p>
   </div>
   <div class="field">
     <%= f.label :location %><br />

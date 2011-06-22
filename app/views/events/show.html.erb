@@ -1,6 +1,6 @@
 
 
-	<h1><%= @event.title %> <span class=date>- <%=@event.event_day.strftime '%d/%m/%y %H:%M'%>  </span></h1> <%if @event.event_day > DateTime.now %>
+	<h1><%= @event.title %> <%if @event.has_date? %><span class=date>- <%=@event.event_day.strftime '%d/%m/%y %H:%M'%>  </span><%end%></h1> <%if @event.event_day > DateTime.now %>
       <%if !@event.users.include? current_user%>
         <%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link join"%>
       <%else%>
@@ -17,6 +17,26 @@
     <% end %>
   </p>
   <p><%= @event.location %></p>
+  <%if !@event.has_date? %>
+  <strong>Dates Possibles:</strong>
+  <ul>
+  <% @event.possible_dates.each do |possible_date|%>
+    <li>
+      <%=possible_date.date.strftime '%d/%m/%y %H:%M'%>
+      <%if user_signed_in? && !possible_date.voters.include?(current_user.id)%>
+        <%= link_to image_tag('heart.png'), [@event, possible_date], :method => :put, :class => "vote"%>
+      <%end%>
+      <%if user_signed_in? && possible_date.voters.include?(current_user.id)%>
+        <%= link_to image_tag('heart_red.png'), [@event, possible_date], :method => :put, :class => "vote"%>
+      <%end%>
+      <%if !user_signed_in? %>
+        <%= image_tag('heart.png' , :class => "vote")%>
+      <%end%>
+      <span class=voters><%=possible_date.voters.size%></span>
+    </li>
+  <%end%>
+  </ul>
+  <%end%>
   <p>
     <strong>Participants:</strong>
     <ul>

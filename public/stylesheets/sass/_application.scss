@@ -258,7 +258,9 @@ option {
 input[type="file"] {
 	width:240px;
 }
-
+.vote{
+	margin-left:5px;
+}
 
 .konami {
 	position:absolute;
@@ -330,9 +332,15 @@ aside{
 	width:100%;
 	font-size: 15px;
 	font-family:"Arvo";
-	&:last-child{
+	&.form{
 	list-style-type:none;
 	margin-left:-20px;
+	.delete{
+	float:right;
+	  a{
+	  float:right;display:block;
+	}
+	}
 	}
 	}
 	}

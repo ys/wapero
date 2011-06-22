@@ -3,4 +3,5 @@ module ApplicationHelper
     
     user_signed_in? && current_user.is_admin?
   end
+  
 end

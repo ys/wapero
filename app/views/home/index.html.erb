@@ -20,24 +20,37 @@
   </ul>
   <%end%>
 	</div>
-	<% if  user_signed_in?%>
+
 	<aside>
 			<h2>Ideas for next wapero?</h2>
 	
 		<ul class=ideas>
 			<% @ideas.each do |idea| %>
-				<li class=idea><%=idea.title%></li>
+				<li class=idea><%=idea.title%><% if current_user == idea.creator %><span class='delete'><%= link_to 'Delete', idea, :confirm => 'Are you sure?', :method => :delete %></span><%end%><%if user_signed_in? && !idea.voters.include?(current_user.id)%>
+          <%= link_to image_tag('heart.png'), idea, :method => :put, :class => "vote"%>
+        <%end%>
+        <%if user_signed_in? && idea.voters.include?(current_user.id)%>
+          <%= link_to image_tag('heart_red.png'),idea, :method => :put, :class => "vote"%>
+        <%end%>
+        <%if !user_signed_in? %>
+          <%= image_tag('heart.png' , :class => "vote")%>
+        <%end%>
+        <span class=voters><%=idea.voters.size%></span></li>
 			<%end%>
-			<li><form accept-charset="UTF-8" action="/ideas" class="new_idea" id="new_idea" method="post"><input name="authenticity_token" type="hidden" value="DVHKyNSsMazbMfbVXdqyD07yuJQgAoAIgiMD4wPV62U=">
-			 
-			    <input id="idea_title" name="idea[title]" size="30" type="text">
-			  <div class="actions">
-			    <input id="idea_submit" name="commit" type="submit" value="Create Idea">
-			  </div>
-			</form>
+				<% if  user_signed_in?%>
+			<li class=form><%= form_for(Idea.new) do |f| %>
+      
+      <div class="field">
+        <%= f.text_field :title %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
 			</li>
+			<%end%>
 		</ul>
 		
 	</aside>
-<%end%>
+
 
