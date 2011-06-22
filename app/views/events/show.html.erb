@@ -1,10 +1,13 @@
 
 
-	<h1><%= @event.title %> <%if @event.has_date? %><span class=date>- <%=@event.event_day.strftime '%d/%m/%y %H:%M'%>  </span><%end%></h1> <%if @event.event_day > DateTime.now %>
-      <%if !@event.users.include? current_user%>
-        <%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link join"%>
-      <%else%>
-        <%= link_to 'Leave', leave_event_path(@event) , :method => :delete, :class => "button_link join"%>
+	<h1><%= @event.title %> <%if @event.has_date? %><span class=date>- <%=@event.event_day.strftime '%d/%m/%y %H:%M'%>  </span><%end%></h1> 
+	  <%if @event.event_day > DateTime.now %>
+      <%if @event.has_date? %> 
+        <%if !@event.users.include? current_user%>
+          <%= link_to 'Join', join_event_path(@event), :method => :post, :class => "button_link join"%>
+        <%else%>
+          <%= link_to 'Leave', leave_event_path(@event) , :method => :delete, :class => "button_link join"%>
+        <%end%>
       <%end%>
     <%end%>
   <p class=description>
